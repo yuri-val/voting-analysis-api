@@ -1,10 +1,24 @@
 module Api::V1
 	class DeputiesController < ApiController
+		before_action :set_deputy, only: [:show]
 
-		# GET /v1/deputies
-		def index
-			render json: Deputy.all
-		end
+	  # GET /deputies
+	  def index
+	    @deputies = Deputy.all
+
+	    render json: @deputies
+	  end
+
+	  # GET /deputies/1
+	  def show
+	    render json: @deputy
+	  end
+
+	  private
+	    # Use callbacks to share common setup or constraints between actions.
+	    def set_deputy
+	      @deputy = Deputy.find(params[:id])
+	    end
 
 	end
 end
