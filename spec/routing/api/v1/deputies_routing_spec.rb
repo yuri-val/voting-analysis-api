@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe DeputiesController, type: :routing do
+RSpec.describe Api::V1::DeputiesController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do

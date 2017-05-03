@@ -1,0 +1,2 @@
+class VotingSummary < ApplicationRecord
+end
