@@ -18,11 +18,11 @@ gem 'puma', '~> 3.7'
 # Serializing API Output
 gem 'active_model_serializers'
 
-# Enabling CORS
-gem 'rack-cors'
-
 # DDoS protection
 gem 'rack-attack'
+
+# colorfull strings
+gem 'colorize'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -33,7 +33,7 @@ gem 'rack-attack'
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 # Pasrsing pdf files
 gem 'pdf-reader'

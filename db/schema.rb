@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503140058) do
+ActiveRecord::Schema.define(version: 20170503161151) do
 
   create_table "deputies", force: :cascade do |t|
     t.integer "index_number"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20170503140058) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "voting_tables", force: :cascade do |t|
+    t.integer "voting_id"
+    t.integer "deputy_id"
+    t.integer "voiting_result_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deputy_id"], name: "index_voting_tables_on_deputy_id"
+    t.index ["voiting_result_id"], name: "index_voting_tables_on_voiting_result_id"
+    t.index ["voting_id"], name: "index_voting_tables_on_voting_id"
   end
 
   create_table "votings", force: :cascade do |t|
