@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -10,7 +10,7 @@ end
 gem 'rails', '~> 5.1.0'
 # Use sqlite3 as the database for Active Record
 # Database adapter
-gem 'mysql2'
+#gem 'mysql2'
 gem 'sqlite3'
 gem 'pg'
 # Use Puma as the app server
@@ -52,6 +52,8 @@ group :development, :test do
   # Use gems for generating random test data
   gem 'factory_girl_rails'
   gem 'faker'
+
+  gem 'railroady'
 
 end
 
