@@ -23,10 +23,10 @@ class ZoneCalculator
 												else
 													dep_vote.first.voting_result_id == vote.voting_result_id ? 100 : 0
 												end
-			end
-			@values[:to] << {deputy: dep.to_sh, distance: zone_values.sum / zone_values.size.to_f}
 		end
-		@values[:to].sort_by!{ |h| h[:distance] }.reverse!
+		@values[:to] << {deputy: dep.to_sh, distance: zone_values.sum / zone_values.size.to_f}
 	end
+	@values[:to].sort_by!{ |h| h[:distance] }.reverse!
+end
 
 end
