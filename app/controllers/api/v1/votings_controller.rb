@@ -5,7 +5,7 @@ module Api::V1
     # GET /api/v1/votings
     def index
 
-      deputy_id = params[:id]
+      deputy_id = params[:deputy_id]
 
       @votings = Voting.all
       @votings = @votings.by_deputy(deputy_id) unless deputy_id.nil?
