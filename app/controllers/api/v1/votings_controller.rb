@@ -4,8 +4,12 @@ module Api::V1
 
     # GET /api/v1/votings
     def index
-      @votings = Voting.all
+      
+      deputy_id = params[:id]
 
+      @votings = Voting.all
+      @votings = @votings.by_deputy(deputy_id) unless deputy_id.nil?
+        
       render json: @votings
     end
 

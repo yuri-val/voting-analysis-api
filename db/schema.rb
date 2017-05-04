@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170503161151) do
 
   create_table "voting_results", force: :cascade do |t|
     t.string "name"
+    t.boolean "not_consider", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,12 +35,12 @@ ActiveRecord::Schema.define(version: 20170503161151) do
   create_table "voting_tables", force: :cascade do |t|
     t.integer "voting_id"
     t.integer "deputy_id"
-    t.integer "voiting_result_id"
+    t.integer "voting_result_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deputy_id"], name: "index_voting_tables_on_deputy_id"
-    t.index ["voiting_result_id"], name: "index_voting_tables_on_voiting_result_id"
     t.index ["voting_id"], name: "index_voting_tables_on_voting_id"
+    t.index ["voting_result_id"], name: "index_voting_tables_on_voting_result_id"
   end
 
   create_table "votings", force: :cascade do |t|
@@ -54,9 +55,10 @@ ActiveRecord::Schema.define(version: 20170503161151) do
     t.integer "summary_abstained"
     t.integer "not_voted"
     t.integer "absent"
-    t.integer "voting_summary"
+    t.integer "voting_summary_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["voting_summary_id"], name: "index_votings_on_voting_summary_id"
   end
 
 end

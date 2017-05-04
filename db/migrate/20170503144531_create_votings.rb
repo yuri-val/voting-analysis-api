@@ -12,7 +12,7 @@ class CreateVotings < ActiveRecord::Migration[5.1]
       t.integer :summary_abstained
       t.integer :not_voted
       t.integer :absent
-      t.integer :voting_summary
+      t.references :voting_summary
 
       t.timestamps
     end

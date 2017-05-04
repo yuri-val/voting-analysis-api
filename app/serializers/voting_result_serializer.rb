@@ -1,3 +1,3 @@
 class VotingResultSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :not_consider
 end
