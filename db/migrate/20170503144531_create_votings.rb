@@ -4,9 +4,10 @@ class CreateVotings < ActiveRecord::Migration[5.1]
       t.string :program_name
       t.string :department_name
       t.string :session
+      t.string :number
       t.datetime :date
-      t.string :numder
-      t.text :title
+      t.string :title
+      t.text :content
       t.integer :summary_yea
       t.integer :summary_nay
       t.integer :summary_abstained

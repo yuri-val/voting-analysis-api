@@ -15,8 +15,8 @@ namespace :parser do
   			log.info "#{ind + 1}/#{pdfs_count} -- FAIL. #{parser.error_msg}"
   		end
 			parser.pages.each_with_index do |page, ind|
-				puts "PAGE #{ind + 1}-----------------------------------------"
-				puts page
+				#puts "PAGE #{ind + 1}-----------------------------------------"
+				#puts page
 			end
   		 break
   	end

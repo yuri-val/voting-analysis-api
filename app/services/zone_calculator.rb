@@ -12,7 +12,7 @@ class ZoneCalculator
 
 		all_deputies = Deputy.where.not(id: @center.id)
 
-		@values = { from: @center, to: [] }
+		@values = { from: @center.to_sh, to: [] }
 
 		all_deputies.each do |dep|
 			zone_values = []
@@ -24,7 +24,7 @@ class ZoneCalculator
 													dep_vote.first.voting_result_id == vote.voting_result_id ? 100 : 0
 												end
 			end
-			@values[:to] << {deputy: dep, distance: zone_values.sum / zone_values.size.to_f}
+			@values[:to] << {deputy: dep.to_sh, distance: zone_values.sum / zone_values.size.to_f}
 		end
 		@values[:to].sort_by!{ |h| h[:distance] }.reverse!
 	end
