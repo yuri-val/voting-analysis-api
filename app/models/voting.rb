@@ -1,7 +1,7 @@
 class Voting < ApplicationRecord
   belongs_to :voting_summary
-  has_many :voting_tables
+  has_many :voting_rows
 
-  scope :by_deputy, -> (deputy_id) {joins(:voting_table).where("voting_table.deputy_id = #{deputy_id}")}
+  scope :by_deputy, -> (deputy_id) {joins(:voting_row).where("voting_row.deputy_id = #{deputy_id}")}
 
 end

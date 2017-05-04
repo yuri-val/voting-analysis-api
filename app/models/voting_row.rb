@@ -1,4 +1,4 @@
-class VotingTable < ApplicationRecord
+class VotingRow < ApplicationRecord
   belongs_to :voting
   belongs_to :deputy
   belongs_to :voting_result

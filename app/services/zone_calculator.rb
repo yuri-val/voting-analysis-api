@@ -7,8 +7,8 @@ class ZoneCalculator
   end
 
   def calculate_zone
-    zone_100 = @center.voting_tables.considered
-    other_deputies_votings = VotingTable.where.not(deputy_id: @center.id)
+    zone_100 = @center.voting_rows.considered
+    other_deputies_votings = VotingRow.where.not(deputy_id: @center.id)
 
     all_deputies = Deputy.where.not(id: @center.id)
 

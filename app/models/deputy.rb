@@ -1,5 +1,5 @@
 class Deputy < ApplicationRecord
-  has_many :voting_tables
+  has_many :voting_rows
 
   def to_sh
     options = {}

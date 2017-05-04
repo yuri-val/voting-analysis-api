@@ -18,10 +18,10 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe Api::V1::VotingTablesController, type: :controller do
+RSpec.describe Api::V1::VotingRowsController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # VotingTable. As you add validations to VotingTable, be sure to
+  # VotingRow. As you add validations to VotingRow, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -33,22 +33,22 @@ RSpec.describe Api::V1::VotingTablesController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # VotingTablesController. Be sure to keep this updated too.
+  # VotingRowsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
-    it "assigns all voting_tables as @voting_tables" do
-      voting_table = VotingTable.create! valid_attributes
+    it "assigns all voting_rows as @voting_rows" do
+      voting_row = VotingRow.create! valid_attributes
       get :index, params: {}, session: valid_session
-      expect(assigns(:voting_tables)).to eq([voting_table])
+      expect(assigns(:voting_rows)).to eq([voting_row])
     end
   end
 
   describe "GET #show" do
-    it "assigns the requested voting_table as @voting_table" do
-      voting_table = VotingTable.create! valid_attributes
-      get :show, params: {id: voting_table.to_param}, session: valid_session
-      expect(assigns(:voting_table)).to eq(voting_table)
+    it "assigns the requested voting_row as @voting_row" do
+      voting_row = VotingRow.create! valid_attributes
+      get :show, params: {id: voting_row.to_param}, session: valid_session
+      expect(assigns(:voting_row)).to eq(voting_row)
     end
   end
 

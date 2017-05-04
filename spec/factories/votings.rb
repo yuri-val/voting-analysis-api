@@ -4,7 +4,7 @@ FactoryGirl.define do
     department_name "MyString"
     session "MyString"
     date "2017-05-03 16:45:31"
-    numder "MyString"
+    number "MyString"
     title "MyText"
     summary_yea 1
     summary_nay 1

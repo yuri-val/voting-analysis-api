@@ -25,14 +25,12 @@ RSpec.describe Api::V1::DeputiesController, type: :controller do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {
-      index_number: 1,
       name: "Ivan Ivanov"
     }
   }
 
   let(:invalid_attributes) {
-      {index_number: nil,
-       name: nil}
+      {name: nil}
   }
 
     # This should return the minimal set of values that should be in the session

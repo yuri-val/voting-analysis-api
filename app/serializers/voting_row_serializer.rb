@@ -1,4 +1,4 @@
-class VotingTableSerializer < ActiveModel::Serializer
+class VotingRowSerializer < ActiveModel::Serializer
   attributes :id
   has_one :voting
   has_one :deputy

@@ -1,3 +1,3 @@
 class VotingResult < ApplicationRecord
-  has_many :voting_table
+  has_many :voting_row
 end
