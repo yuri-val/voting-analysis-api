@@ -12,20 +12,23 @@
 
 ActiveRecord::Schema.define(version: 20170503161151) do
 
-  create_table "deputies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "deputies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "voting_results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "voting_results", force: :cascade do |t|
     t.string "name"
     t.boolean "not_consider", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "voting_rows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "voting_rows", force: :cascade do |t|
     t.bigint "voting_id"
     t.bigint "deputy_id"
     t.bigint "voting_result_id"
@@ -36,13 +39,13 @@ ActiveRecord::Schema.define(version: 20170503161151) do
     t.index ["voting_result_id"], name: "index_voting_rows_on_voting_result_id"
   end
 
-  create_table "voting_summaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "voting_summaries", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "votings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "votings", force: :cascade do |t|
     t.string "program_name"
     t.string "department_name"
     t.string "session"
