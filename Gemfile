@@ -22,7 +22,7 @@ gem 'active_model_serializers'
 gem 'rack-attack'
 
 # colorfull strings
-gem 'colorize' 
+gem 'colorize'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -49,6 +49,9 @@ group :development, :test do
   # Use gems for generating random test data
   gem 'factory_girl_rails'
   gem 'faker'
+
+  # Database adapter
+  gem 'mysql2'
 end
 
 group :development do

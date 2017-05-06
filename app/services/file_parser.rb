@@ -5,9 +5,8 @@ class FileParser
 
   attr_reader :vote_header, :vote_table
 
-  def initialize(file, log, create = false)
+  def initialize(file, log)
     @file = file
-    @create = create
     @error_msg = ""
     @raw_text = ""
     @log = log
@@ -49,13 +48,12 @@ class FileParser
   end
 
   def parse_pages
+    count = @pages.size
     @pages.each_with_index do |page, ind|
+      puts "PAGE #{ind + 1}/#{count}"
       @page = page
       parse_page
-      break if ind == 5
-      if @create
-        create_voting
-      end
+      create_voting
     end
   end
 
@@ -189,15 +187,19 @@ class FileParser
       @table << line
     end
     cut_header
-    puts @table
   end
 
   def cut_header
-    4.times do
-      if @table.lines[0].strip.start_with?("№") or @table.lines[0].strip.start_with?("голосування") or @table.lines[0].strip.start_with?("п/п") or @table.lines[0].strip.empty?
-          arr = @table.lines
-          arr.slice!(0)
-          @table = arr.join("")
+    5.times do
+      next if @table.lines[0].nil?
+      if @table.lines[0].strip.start_with?("№") or
+          @table.lines[0].strip.start_with?("голосування") or
+          @table.lines[0].strip.start_with?("Результат") or
+          @table.lines[0].strip.start_with?("п/п") or
+          @table.lines[0].strip.empty?
+            arr = @table.lines
+            arr.slice!(0)
+            @table = arr.join("")
       end
     end
   end
@@ -253,16 +255,6 @@ class TableParser
   end
 
   def parse
-    for_cut = 0
-    @table.lines.each_with_index do |line, ind|
-      if !line.start_with?("п/п") and !line.strip.empty?
-        for_cut = ind + 1
-        break
-      end
-    end
-    cut_table(for_cut)
-    p @table
-    exit 1
     @table.lines.each_with_index do |line, ind|
       parse_line line, ind
     end
@@ -320,7 +312,7 @@ class TableParser
     values = el_string.split("|")
     values.map! { |e| e.strip }
 
-    vote = VotingResult.find_or_create_by(name: values.last)
+    vote = VotingResult.find_or_create_by(name: values.last.gsub(/[\s+ ]/, " ").strip)
     values.pop
 
     dep = Deputy.find_or_create_by(name: values.join(" "))

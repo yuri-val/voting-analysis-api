@@ -12,24 +12,19 @@ namespace :parser do
     pdfs = Dir['public/pdfs/*.pdf']
     pdfs_count = pdfs.size
     pdfs.each_with_index do |pdf, ind|
+      puts "FILE: #{pdf}"
       name = pdf.split('/').last
       parser = FileParser.new pdf, log
       if parser.ok?
         log.info "#{ind + 1}/#{pdfs_count} -- #{name} -- OK"
-        #FileUtils.mv pdf, "public/pdfs/processed/#{name}"
+        FileUtils.mv pdf, "public/pdfs/processed/#{name}"
       else
         log.info "#{ind + 1}/#{pdfs_count} -- #{name} -- FAIL.\n #{parser.error_msg}"
       end
-      #puts "FILE #{name}------------------------"
-      #parser.pages.each_with_index do |page, n_ind|
-      #  puts "----PAGE #{n_ind + 1} ----------------------------------------------"
-      #  puts page
-      #  break if n_ind == 4
-      #end
     end
 
     end_time = Time.now
-    duration = (start_time - end_time) / 1.minute
+    duration = (end_time - start_time) / 1.minute
     log.info "Task finished at #{end_time} and last #{duration} minutes."
     log.close
 

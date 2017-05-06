@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root to: 'routes#index'
   scope module: 'api' do
     namespace :v1 do
       resources :voting_results, :voting_rows, only: [:index, :show]

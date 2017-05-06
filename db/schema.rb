@@ -12,23 +12,23 @@
 
 ActiveRecord::Schema.define(version: 20170503161151) do
 
-  create_table "deputies", force: :cascade do |t|
+  create_table "deputies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "voting_results", force: :cascade do |t|
+  create_table "voting_results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.boolean "not_consider", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "voting_rows", force: :cascade do |t|
-    t.integer "voting_id"
-    t.integer "deputy_id"
-    t.integer "voting_result_id"
+  create_table "voting_rows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "voting_id"
+    t.bigint "deputy_id"
+    t.bigint "voting_result_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deputy_id"], name: "index_voting_rows_on_deputy_id"
@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 20170503161151) do
     t.index ["voting_result_id"], name: "index_voting_rows_on_voting_result_id"
   end
 
-  create_table "voting_summaries", force: :cascade do |t|
+  create_table "voting_summaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "votings", force: :cascade do |t|
+  create_table "votings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "program_name"
     t.string "department_name"
     t.string "session"
@@ -55,10 +55,13 @@ ActiveRecord::Schema.define(version: 20170503161151) do
     t.integer "summary_abstained"
     t.integer "not_voted"
     t.integer "absent"
-    t.integer "voting_summary_id"
+    t.bigint "voting_summary_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["voting_summary_id"], name: "index_votings_on_voting_summary_id"
   end
 
+  add_foreign_key "voting_rows", "deputies"
+  add_foreign_key "voting_rows", "voting_results"
+  add_foreign_key "voting_rows", "votings"
 end
