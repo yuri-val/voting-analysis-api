@@ -1,9 +1,0 @@
-image: ruby:2.3
-
-production:
-  type: deploy
-  script:
-  - gem install dpl
-  - dpl --provider=heroku --app=voting-app-yuri --api-key=f73ec6cf-38b4-49b8-b3b4-c941aa87f081
-  only:
-  - master
